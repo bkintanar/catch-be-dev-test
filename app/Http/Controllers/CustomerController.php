@@ -12,7 +12,7 @@ class CustomerController extends Controller
     {
         return QueryBuilder::for(Customer::class)
             ->allowedFilters(['first_name', 'last_name', 'email', 'company', 'title'])
-            ->allowedSorts('first_name', 'last_name')
+            ->allowedSorts('last_name', 'title', 'email', 'company')
             ->paginate($this->perPage)
             ->appends($request->query());
     }

@@ -1,45 +1,33 @@
-# Backend Developer Test
+# System Requirements
+1. PHP version >= 8.2
+2. Composer >= 2.8.4 (https://getcomposer.org)
+3. MySQL >= 8.0.33
+4. Yarn
 
-A simple test for Backend developers
+# Backend Setup
+1. `$ cp .env.example .env` # copies the example environment variables.
+2. create a MySQL database named `catch_be_dev_test`.
+3. `$ composer install`
+4. Open `.env` and modify the following database variables if needed.
+    * `DB_DATABASE=catch_be_dev_test`
+    * `DB_USERNAME=root`
+    * `DB_PASSWORD=`
+5. `$ php artisan migrate`
+6. `$ php artisan app:import-customer-data`
+7. `$ php artisan serve`
 
-## Instructions
+# Frontend Setup
+1. `$ cd ui`
+2. `$ yarn`
+3. `$ yarn dev`
 
-1. Clone this repo.
-2. Use one or more of these programming/scripting languages:
-   1. TypeScript
-   2. JavaScript
-   4. PHP
-   5. Python
-   6. Ruby
-   7. Bash
-4. Write a script to Import the CSV file located in `data/customers.csv` into a database.
-5. Create a basic API that presents the data from the database in a way that is suitable for a mobile or web based client.
-   1. Implement pagination
-   2. Handle user input appropriately
-7. Create a basic web app that asynchronously loads the JSON data into a list view of some description.
-8. Email tech-tests@catchdesign.co.nz with:
-    1. A link to your repo OR
-    2. A zip file of your project including git config/metadata
+# URLs
+1. `http://localhost:3000/` # frontend url
+2. `http://localhost:8000/` # backend url
 
-### Guidelines
-
-1. Your repo needs to include at minimum anything required to get the app working.  Detailed instructions should be provided in the `README.md` file to setup and run the app.
-2. If a structured schema migration tool is not used then a setup script must be supplied to create any data tables etc
-3. Aim to spend 1-4 hours on it
-
-### Assessment Guidelines
-
-* Comprehension
-* Setup/running the code should be smooth and simple
-* Selection of frameworks
-* Code should be:
-    * clean
-    * well documented / annotated / typed
-    * simple
-    * easy to maintain
-* Good package management and git practices
-* Documentation and architecture
-* Security / Performance / SEO / Accessibility considerations
-* Tests
-* General code quality, organisation and best practices
-
+# Running the App
+1. make sure both frontend and backend setup steps as been followed.
+2. visit http://localhost:3000
+3. it will show the customer table with basic pagination (previous, next)
+4. it also shows pagination meta data (Showing 1 to 15 of 1000)
+5. table headers can be clicked for sorting, though it lacks arrows, when clicking a header twice, it will sort from descending to ascending and vice versa.
