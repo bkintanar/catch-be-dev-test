@@ -13,7 +13,7 @@
     * `DB_USERNAME=root`
     * `DB_PASSWORD=`
 5. `$ php artisan migrate`
-6. `$ php artisan app:import-customer-data`
+6. `$ php artisan app:import-customers-data`
 7. `$ php artisan serve`
 
 # Frontend Setup
@@ -31,3 +31,15 @@
 3. it will show the customer table with basic pagination (previous, next)
 4. it also shows pagination meta data (Showing 1 to 15 of 1000)
 5. table headers can be clicked for sorting, though it lacks arrows, when clicking a header twice, it will sort from descending to ascending and vice versa.
+
+# Things to note
+1. Import script can be found here: `app/Console/Commands/ImportCustomersDataCommand.php`
+   * default command is `php artisan app:import-customers-data`, but can also pass a file argument like `php artisan app:import-customers-data file=another-file.csv`
+   * command checks for duplicates (email) and does not insert them to db.
+   * shows information on which file is being used when importing.
+   * shows total number of records imported.
+   * throws an error if the passed file does not exist.
+2. CustomerController.php is where the controller for the customer is. It's just a small code, it uses spatie's laravel-query-builder.
+3. Frontend stuff is located at ./ui.
+4. Frontend uses Nuxtjs and code can be found in `./ui/pages/index.vue`
+5. Both php artisan serve and yarn dev must be running in 2 separate terminals for this to work.
